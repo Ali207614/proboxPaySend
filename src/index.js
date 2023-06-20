@@ -6,15 +6,15 @@ const path = require("path");
 const moment = require("moment");
 const { formatterCurrency, readDoc } = require("./helpers");
 
-
+bot.on("text", async (msg) => {
+    let chat_id = msg.chat.id;
+    bot.sendMessage(chat_id, "Assalomu aleykum :) ")
+});
 const start = async () => {
     try {
 
         try {
-            bot.on("text", async (msg) => {
-                let chat_id = msg.chat.id;
-                bot.sendMessage(chat_id, "Assalomu aleykum :) ")
-            });
+            
             const connection = hanaClient.createConnection();
             connection.connect(conn_params, async (err) => {
                 if (err) {

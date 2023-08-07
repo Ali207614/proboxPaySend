@@ -1,6 +1,6 @@
 
 const moment = require('moment')
-let db = 'PROBOX_READY'
+let db = 'PROBOX_PROD_3'
 
 
 module.exports = {

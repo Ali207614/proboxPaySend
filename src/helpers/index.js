@@ -23,14 +23,27 @@ const lastCurrency = (currencyList) => {
     )[0];
 };
 
-async function constructor({ Phone1, status = false, month }) {
+async function constructor({ Phone1, status = false, month, monthNum, listPaymentLength, CardName }) {
     let obj = {
         recipient: Phone1,
         "message-id": "abc000000001",
         sms: {
             originator: "3700",
             content: {
-                text: status == 3 ? `Mahsulot uchun oldindan qilgan to’lovingiz qabul qilindi` : status ? `${month} oyi uchun qilgan to’lovingiz qabul qilindi va Siz ushbu oyda o’ynaladigan aksiyamiz ishtirokchisiga aylandingiz!` : `${month} oyi uchun qilgan to’lovingiz qabul qilindi.`
+                text: status == 3 ? `Assalomu alaykum, ${CardName}
+
+                Sizning Apple mahsulotlaringizni muddatli to'lovga harid qilganingiz uchun sizga katta rahmat! ProBox jamoasi sizning tasavvuringizni imkoniyatga aylantirishga yordam berishdan mamnun. Yangi Apple mahsulotingizdan zavq olishingizni umid qilamiz!
+                
+                Hurmat bilan,
+                ProBox` : status ? `Assalomu alaykum, ${CardName}
+
+                Sizning ProBox bilan bo'lgan samarali hamkorligingiz uchun sizga katta rahmat! Sizning ${listPaymentLength} oylik to'lovingizni ${monthNum} oyligi muvaffaqiyatli amalga oshirildi. Bu sizning tasavvuringizni imkoniyatga aylantirishga qaratilgan samarali qadam bo'lib hisoblanadi.   Siz ${month} oyining iPhone 14 yutuqli o’ynida ishtirokshisi bo’ldingiz, omad tilaymiz.
+                
+                Hurmat bilan,
+                ProBox` : `Assalomu alaykum, ${CardName}
+
+                Sizning ProBox bilan bo'lgan samarali hamkorligingiz uchun sizga katta rahmat! Sizning ${listPaymentLength} oylik to'lovingizni ${monthNum} oyligi muvaffaqiyatli amalga oshirildi. Bu sizning tasavvuringizni imkoniyatga aylantirishga qaratilgan samarali qadam bo'lib hisoblanadi.   Hurmat bilan,
+                ProBox`
             },
         },
     };
@@ -52,7 +65,6 @@ const payDate = (obj) => {
 }
 
 const schema = async (data, schemaText) => {
-    console.log(schemaText)
     return `${schemaText[0].sms.content.text}\n\n\nFullName: ${data.CardName}\nPhone: ${data.Phone1}\nFirstPayment: ${(data.U_FirstPayment * 1) > 0}\nTo'lagan summa va vaqt: ${data.PaidToDate} || ${moment(data.DOCDUEDATE).format('L')}\nTo'lashi kerak bo'lgan summa va vaqt: ${data.InsTotal} || ${moment(data.DUEDATE).format('L')}\nVznos: ${data.InstId}`
 }
 

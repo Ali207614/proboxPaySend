@@ -34,7 +34,7 @@ const start = async () => {
 
 
 
-// setInterval(() => {
-// }, 3000 * 60)
-start();
+setInterval(() => {
+    start();
+}, 3000 * 60)
 

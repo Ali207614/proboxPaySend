@@ -22,8 +22,8 @@ exports.fetchResults = async function ({ id }) {
                 let data = item.find((el, i, arr) => el.InstlmntID == arr[0].InstId)
                 let statusMessage = await sendMessage(data, item?.length)
                 if (statusMessage.status == 200) {
-                    bot.sendMessage(chatId, await schema(data, statusMessage.data));
-                    bot.sendMessage('5329778807', await schema(data, statusMessage.data));
+                    // bot.sendMessage(chatId, await schema(data, statusMessage.data));
+                    // bot.sendMessage('5329778807', await schema(data, statusMessage.data));
                 }
                 else {
                     bot.sendMessage(chatId, await schema(data, statusMessage.data));
@@ -49,12 +49,12 @@ const sendMessage = async (data, listPaymentLength = 1) => {
                 for (let j = 0; j < userPhone.length; j++) {
                     if (userPhone[j])
                         result.push(
-                            await constructor({ Phone1: userPhone[j], status, month, monthNum: data?.InstId, listPaymentLength, userName: data?.CardName })
+                            await constructor({ Phone1: userPhone[j], status, month, monthNum: data?.InstId, listPaymentLength, CardName: data?.CardName })
                         );
                 }
             } else {
                 result.push(
-                    await constructor({ Phone1: data.Phone1, status, month, monthNum: data?.InstId, listPaymentLength, userName: data?.CardName })
+                    await constructor({ Phone1: data.Phone1, status, month, monthNum: data?.InstId, listPaymentLength, CardName: data?.CardName })
                 );
             }
         }
@@ -70,19 +70,19 @@ const sendMessage = async (data, listPaymentLength = 1) => {
 async function sendMessageAxios(data) {
     try {
         if (data.length) {
-            const res = await axios.post(
-                "https://send.smsxabar.uz/broker-api/send",
-                {
-                    messages: data.slice(0, 100),
-                },
-                {
-                    auth: {
-                        username: "zafartravel",
-                        password: "iEaG)d4J5&^8",
-                    },
-                }
-            );
-            return { status: res?.status, data };
+            // const res = await axios.post(
+            //     "https://send.smsxabar.uz/broker-api/send",
+            //     {
+            //         messages: data.slice(0, 100),
+            //     },
+            //     {
+            //         auth: {
+            //             username: "zafartravel",
+            //             password: "iEaG)d4J5&^8",
+            //         },
+            //     }
+            // );
+            return { status: true, data };
         }
     } catch (err) {
         bot.sendMessage(chatId, `${err} sendMessageAxios func`);

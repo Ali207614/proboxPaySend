@@ -44,8 +44,6 @@ const sendMessage = async (data, listPaymentLength = 1) => {
         let result = [];
         let userPhone = data.Phone1?.split(" ");
         let { status, month } = payDate(data)
-        console.log(listPaymentLength)
-        console.log(data)
         if (userPhone) {
             if (userPhone?.length >= 2) {
                 for (let j = 0; j < userPhone.length; j++) {
@@ -72,19 +70,19 @@ const sendMessage = async (data, listPaymentLength = 1) => {
 async function sendMessageAxios(data) {
     try {
         if (data.length) {
-            // const res = await axios.post(
-            //     "https://send.smsxabar.uz/broker-api/send",
-            //     {
-            //         messages: data.slice(0, 100),
-            //     },
-            //     {
-            //         auth: {
-            //             username: "zafartravel",
-            //             password: "iEaG)d4J5&^8",
-            //         },
-            //     }
-            // );
-            return { status: true, data };
+            const res = await axios.post(
+                "https://send.smsxabar.uz/broker-api/send",
+                {
+                    messages: data.slice(0, 100),
+                },
+                {
+                    auth: {
+                        username: "zafartravel",
+                        password: "iEaG)d4J5&^8",
+                    },
+                }
+            );
+            return { status: res?.status, data };
         }
     } catch (err) {
         bot.sendMessage(chatId, `${err} sendMessageAxios func`);

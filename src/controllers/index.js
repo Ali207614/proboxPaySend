@@ -22,8 +22,8 @@ exports.fetchResults = async function ({ id }) {
                 let data = item.find((el, i, arr) => el.InstlmntID == arr[0].InstId)
                 let statusMessage = await sendMessage(data, item?.length)
                 if (statusMessage.status == 200) {
-                    // bot.sendMessage(chatId, await schema(data, statusMessage.data));
-                    // bot.sendMessage('5329778807', await schema(data, statusMessage.data));
+                    bot.sendMessage(chatId, await schema(data, statusMessage.data));
+                    bot.sendMessage('5329778807', await schema(data, statusMessage.data));
                 }
                 else {
                     bot.sendMessage(chatId, await schema(data, statusMessage.data));

@@ -28,14 +28,21 @@ async function constructor({ Phone1, status = false, month, monthNum, listPaymen
         recipient: Phone1,
         "message-id": "abc000000001",
         sms: {
-            originator: "PROBOX",
+            originator: "3700",
             content: {
                 text: status == 3 ? `Assalomu alaykum, ${CardName}
 
                 Sizning Apple mahsulotlaringizni muddatli to'lovga harid qilganingiz uchun sizga katta rahmat! ProBox jamoasi sizning tasavvuringizni imkoniyatga aylantirishga yordam berishdan mamnun. Yangi Apple mahsulotingizdan zavq olishingizni umid qilamiz!
                 
                 Hurmat bilan,
-                ProBox` : status ? `Assalomu alaykum, ${CardName}
+                ProBox
+
+                Assalomu Alaykum ${CardName}, ProBox kompaniyasing xizmat ko'rsatish sifatini oshirmoqchimiz,  yaxshilash uchun sizning fikringiz juda muhim, taklifingizni kutib qolamiz. 
+                
+                Hurmat bilan, ProBox 
+
+                https://docs.google.com/forms/d/e/1FAIpQLSf98oP5M876BVenv_W15QbmeCm2PffHiLwFMb_Yk3w8Ep8PmQ/viewform
+                ` : status ? `Assalomu alaykum, ${CardName}
 
                 Sizning ProBox bilan bo'lgan samarali hamkorligingiz uchun sizga katta rahmat! Sizning ${listPaymentLength} oylik to'lovingizni ${monthNum} oyligi muvaffaqiyatli amalga oshirildi. Bu sizning tasavvuringizni imkoniyatga aylantirishga qaratilgan samarali qadam bo'lib hisoblanadi.   Siz ${month} oyining iPhone 14 yutuqli o’ynida ishtirokshisi bo’ldingiz, omad tilaymiz.
                 

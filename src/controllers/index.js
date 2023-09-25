@@ -82,6 +82,8 @@ async function sendMessageAxios(data) {
                     },
                 }
             );
+            console.log(res.status)
+            console.log(data)
             return { status: res.status, data };
         }
     } catch (err) {

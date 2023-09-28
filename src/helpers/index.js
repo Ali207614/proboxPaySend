@@ -28,7 +28,7 @@ async function constructor({ Phone1, status = false, month, monthNum, listPaymen
         recipient: Phone1,
         "message-id": "abc000000001",
         sms: {
-            originator: "3700",
+            originator: "PROBOX",
             content: {
                 text: status == 3 ? `Assalomu alaykum, ${CardName}
 

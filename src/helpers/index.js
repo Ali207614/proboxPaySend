@@ -23,14 +23,22 @@ const lastCurrency = (currencyList) => {
     )[0];
 };
 
-async function constructor({ Phone1, status = false, month, monthNum, listPaymentLength, CardName }) {
+async function constructor({ insTotal = 0, paidTotal = 0, Phone1, status = false, month, monthNum, listPaymentLength, CardName }) {
+    let n = ``
     let obj = {
         recipient: Phone1,
         "message-id": "abc000000001",
         sms: {
             originator: "PROBOX",
             content: {
-                text: status == 3 ? `Assalomu alaykum, ${CardName}
+                text: +insTotal != +paidTotal ? `
+                Assalomu alaykum, ${CardName}
+
+                Sizning ProBox bilan bo'lgan samarali hamkorligingiz uchun sizga katta rahmat! Sizning ${listPaymentLength} oylik to'lovingizni ${monthNum} oyligi muvaffaqiyatli amalga oshirildi.
+                Hurmat bilan,
+                ProBox
+                ` :
+                    status == 3 ? `Assalomu alaykum, ${CardName}
 
                 Sizning Apple mahsulotlaringizni muddatli to'lovga harid qilganingiz uchun sizga katta rahmat! ProBox jamoasi sizning tasavvuringizni imkoniyatga aylantirishga yordam berishdan mamnun. Yangi Apple mahsulotingizdan zavq olishingizni umid qilamiz!
                 

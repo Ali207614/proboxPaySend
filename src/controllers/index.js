@@ -23,10 +23,10 @@ exports.fetchResults = async function ({ id }) {
                 let statusMessage = await sendMessage(data, item?.length)
                 if (statusMessage?.status == 200) {
 
-                    // bot.sendMessage(chatId, await schema(data, statusMessage.data));
-                    // bot.sendMessage('5683958462', await schema(data, statusMessage.data));
-                    // bot.sendMessage('5329778807', await schema(data, statusMessage.data));
-                    // bot.sendMessage('2716711', await schema(data, statusMessage.data));
+                    bot.sendMessage(chatId, await schema(data, statusMessage.data));
+                    bot.sendMessage('5683958462', await schema(data, statusMessage.data));
+                    bot.sendMessage('5329778807', await schema(data, statusMessage.data));
+                    bot.sendMessage('2716711', await schema(data, statusMessage.data));
 
                 }
                 else {

@@ -12,9 +12,7 @@ bot.on("text", async (msg) => {
 });
 const start = async () => {
     try {
-
         try {
-
             const connection = hanaClient.createConnection();
             connection.connect(conn_params, async (err) => {
                 if (err) {
@@ -34,7 +32,7 @@ const start = async () => {
 
 
 
-// setInterval(() => {
-// }, 3000 * 60)
-start();
+setInterval(() => {
+    start();
+}, 3000 * 60)
 
